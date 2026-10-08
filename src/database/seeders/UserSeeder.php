@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
                 ->has(
                     Attendance::factory()
                         ->count(15)
+                        ->sequence(fn ($sequence) => ['date' => now()->subDays($sequence->index + 1)->toDateString()])
                         ->hasRests(fake()->numberBetween(1, 2))
                 )
                 ->create([
@@ -41,6 +42,7 @@ class UserSeeder extends Seeder
             ->has(
                 Attendance::factory()
                     ->count(15)
+                    ->sequence(fn ($sequence) => ['date' => now()->subDays($sequence->index + 1)->toDateString()])
                     ->hasRests(fake()->numberBetween(1, 2))
             )
             ->create([
